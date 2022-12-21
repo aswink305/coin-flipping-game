@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin toss</title>
+    <link rel="stylesheet" href="cointoss.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+    <div class="row">
+        <div class="col">
+            <div class="col-sm-12" style="height: 100px;"></div>
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-sm-5" style="background-color: rgb(255, 255, 255); height: 500px; border: 1px solid black; border-radius: 20px;">
+                    <div class="row">
+                        <div class="col-sm-12" style="height: 50px;"></div>
+                       <div class="row">
+                        <div class="view">
+
+                        </div>
+                           <div class="col-sm-4">
+                            </div>
+                            <div class="col-sm-5" style="background-color:rgb(255, 255, 255) ; text-align: center;">
+                                <div id="div1" style="text-align: center;">
+
+                                <img style="height: 100px;" src="1.jpeg" alt="" id="image">
+                            </div>
+                        </div>
+                            <!-- <div id="div2">
+                                <img style="height: 100px;"  alt="">
+                            </div> -->
+                            
+                            <div class="col-sm-3">
+
+
+                            </div>
+                        </div>
+                    <div class="col" style="height: 100px;"></div>
+                        <br>
+                        <br>
+                        <div class="col-sm-12" style="height: 20px; "></div>
+                        <div class="col-sm-6" style="height: 70px;">
+                            <p id="p1" style="text-align: center;" >User :<span id="user"></span></p>
+
+                        </div>
+                        <div class="col-sm-6">
+                        <p id="p2" style="text-align: center;" >Computer :<span id="computer"></span></p>
+
+                        </div>
+                        <div class="col-sm-12" style="height: 40px; text-align: center;">
+                            <p ><span id="drwpanel2"> </span> <span id="drwpanel"></span></p>
+                        </div>
+                        <div class="col-sm-6" style="text-align: center;">
+                        <button  onclick="coinflip('head')" style=" background-color: rgb(0, 234, 255); border-radius: 10px; height: 40px; width: 100px;">Head</button>
+
+
+                        </div>
+                        <div class="col-sm-6" style="text-align: center">
+                         <button onclick="coinflip('tail')" style=" background-color: rgba(246, 2, 242, 0.453); border-radius: 10px; height: 40px; width: 100px;">Tail</button>
+
+                        </div>
+                        <div class="col-sm-12" style="height: 20px; ">
+
+                        </div>
+                           
+                           <div class="col-sm-12" style="text-align: center;">
+                            <button onclick="reset()" style=" background-color: rgb(255, 255, 255); border-radius: 10px; height: 40px; width: 100px;">Reset</button>
+
+                        </div> 
+                     </div>
+                  </div>
+                <div class="col"></div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+       let userpoint=1;
+       let computerpoint=1;
+
+       let comp=["head","tail"];
+        sample=0;
+      function coinflip(as){
+
+        
+        let coin=['head','tail'];
+        count=0;
+        let head='1.jpeg'
+         let tail='2.jpeg'
+      let  myln=setInterval(() => {
+                
+            count++;
+            let or=Math.floor((Math.random() *2));
+            
+           cointosss=coin[or];
+           console.log(cointosss)
+            if(cointosss=='head'){
+               document.getElementById('image').src=head;
+            } else{       
+                document.getElementById('image').src=tail;
+            }  
+            if(count==30){
+                clearInterval(myln);
+                count=0;
+                button(as);
+            }
+        }, 30);
+      }                
+        console.log(sample);
+        
+     
+        function button(value){
+           
+           let userchoice=value;
+            let system=Math.floor((Math.random() *2));
+           let computerchoice=comp[system];
+        //    document.getElementById('').innerHTML=computerchoice;
+        //     document.getElementById('').innerHTML=userchoice;
+        
+
+          if(userchoice=="head" && computerchoice=="head"){
+            document.getElementById('drwpanel').innerHTML="Draw Try Again" ;
+
+
+          }else if(userchoice=="tail" && computerchoice=="tail"){
+            document.getElementById('drwpanel').innerHTML="Draw Try Again" ;
+          }
+      else if(userchoice=="head" && cointosss=="head"){
+           let userp=userpoint++ ;
+           document.getElementById('drwpanel').innerHTML="User Get A Point" ;
+           document.getElementById('user').innerHTML=userp ;
+        }
+        else if(computerchoice=="head" && cointosss=="head"){
+           let compp=computerpoint++ ;
+           document.getElementById('drwpanel').innerHTML="Computer Get A Point" ;
+           document.getElementById('computer').innerHTML=compp ;
+
+        }else if(userchoice=="tail"&&cointosss=="tail"){
+            let userp=userpoint++ ;
+            document.getElementById('drwpanel').innerHTML="User Get A Point" ;
+
+           document.getElementById('user').innerHTML=userp ;
+   
+        }else if(computerchoice=="tail" && cointosss=="tail"){
+           let compp=computerpoint++ ;
+           document.getElementById('drwpanel').innerHTML="Computer Get A Point" ;
+           document.getElementById('computer').innerHTML=compp ;
+
+        }
+                       
+      let uservalue=document.getElementById('user').textContent;
+      let computervalue=document.getElementById('computer').textContent;
+        if(uservalue==5){
+            document.getElementById('drwpanel').innerHTML="User Wins The  Match"
+        }else if(computervalue==5){
+            document.getElementById('drwpanel').innerHTML="Computer Wins The  Match"
+
+        }
+    }
+
+    function reset(){
+       location.reload();
+    }
+    </script>
+</body>
+</html>
